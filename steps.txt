@@ -1,9 +1,14 @@
 su -
+mkdir -p /opt/ovirtengine-va-scripts/
+mkdir -p /etc/puppet/modules
 rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-1.noarch.rpm
+rpm -ivh http://mirrors.coreix.net/fedora-epel/6/i386/epel-release-6-7.noarch.rpm
 rpm -ivh http://yum.postgresql.org/9.1/redhat/rhel-6-x86_64/pgdg-centos91-9.1-4.noarch.rpm
+
 yum -y update
-yum -y install puppet
-yum install git
+yum -y install puppet git puppet wget
 puppet module install akumria/postgresql
 
-
+cd /opt/ovirtengine-va-scripts/
+wget -O /opt/ovirtengine-va-scripts/jboss-as-7.1.1.Final.tar.gz http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.tar.gz
+tar xzf ./jboss-as-7.1.1.Final.tar.gz
