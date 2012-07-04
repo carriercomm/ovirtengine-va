@@ -1,0 +1,25 @@
+node default {
+
+ package {'postgresql91-server':
+    ensure => 'latest'
+ }
+
+ package {'postgresql91-contrib':
+    ensure => 'latest'
+ }
+
+ service { "postgresql-9.1":
+  enable => true,
+  ensure  => "running"
+ }
+
+ class {'postgresql::server':
+    listen => ['127.0.0.1', ],
+    port   => 5432
+ }
+
+ postgresql::db { 'ovirt_engine':
+    password => 'mypassword',
+ }
+
+}
