@@ -1,0 +1,9 @@
+su -
+rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-1.noarch.rpm
+rpm -ivh http://yum.postgresql.org/9.1/redhat/rhel-6-x86_64/pgdg-centos91-9.1-4.noarch.rpm
+yum -y update
+yum -y install puppet
+yum install git
+puppet module install akumria/postgresql
+
+
